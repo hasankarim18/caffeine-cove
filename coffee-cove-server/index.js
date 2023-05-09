@@ -17,8 +17,6 @@ app.use(express.json());
 const userName = process.env.DB_USER_NAME;
 const db_password = process.env.DD_PASSWORD;
 
-// const uri =
- // "mongodb+srv://cocoffeeCove1987:<password>@cluster0.nzfxe6e.mongodb.net/?retryWrites=true&w=majority";
 const uri =
   `mongodb+srv://${userName}:${db_password}@cluster0.nzfxe6e.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -36,13 +34,17 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
+
+    
+
+
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+ //   await client.close();
   }
 }
 run().catch(console.dir);
