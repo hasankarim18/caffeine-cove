@@ -35,7 +35,16 @@ async function run() {
     await client.connect();
     // Send a ping to confirm a successful connection
 
-    
+    // const database = client.db("coffeeDb");
+     const coffeeCollections = client.db("coffeeDb").collection("coffees");
+
+    app.post("/coffees", async (req, res) => {
+      const newCoffee = req.body;
+       console.log(newCoffee);
+       const result = await coffeeCollections.insertOne(newCoffee);
+       res.send(result)
+     
+    });
 
 
     await client.db("admin").command({ ping: 1 });
